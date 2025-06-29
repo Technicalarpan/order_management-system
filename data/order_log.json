@@ -1,0 +1,42 @@
+[
+    {
+        "customer": "Arpan",
+        "product": "MacBook Air",
+        "quantity": 2,
+        "warehouse": "Warehouse_1",
+        "location": "Delhi",
+        "price_per_item": 95000,
+        "total_cost": 190000,
+        "date": "2025-06-29 20:51:13"
+    },
+    {
+        "customer": "sss",
+        "product": "iPhone 13",
+        "quantity": 1,
+        "warehouse": "Warehouse_1",
+        "location": "Delhi",
+        "price_per_item": 70000,
+        "total_cost": 70000,
+        "date": "2025-06-29 20:54:17"
+    },
+    {
+        "customer": "sss",
+        "product": "MacBook Air",
+        "quantity": 4,
+        "warehouse": "Warehouse_3",
+        "location": "Mumbai",
+        "price_per_item": 97000,
+        "total_cost": 388000,
+        "date": "2025-06-29 20:54:44"
+    },
+    {
+        "customer": "sss",
+        "product": "iPhone 13",
+        "quantity": 12,
+        "warehouse": "Warehouse_3",
+        "location": "Mumbai",
+        "price_per_item": 71000,
+        "total_cost": 852000,
+        "date": "2025-06-29 20:55:57"
+    }
+]
