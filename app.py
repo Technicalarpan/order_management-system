@@ -30,32 +30,72 @@ with tab1:
             st.success(result)
 
             if details:
-                # Show invoice preview
                 st.markdown("### 🧾 Invoice")
-                invoice_text = f"""
-**Customer:** {details['customer']}  
-**Product:** {details['product']}  
-**Quantity:** {details['quantity']}  
-**Unit Price:** ₹{details['price_per_item']}  
-**Total Cost:** ₹{details['total_cost']}  
-**Warehouse:** {details['warehouse']} ({details['location']})  
-**Date:** {details['date']}
-"""
-                st.markdown(invoice_text)
 
-                # Download as text
-                invoice_file = f"""Invoice for {details['customer']}
-----------------------------------------
-Product       : {details['product']}
-Quantity      : {details['quantity']}
-Unit Price    : ₹{details['price_per_item']}
-Total Cost    : ₹{details['total_cost']}
-Warehouse     : {details['warehouse']} ({details['location']})
-Date          : {details['date']}
-"""
-                buffer = BytesIO(invoice_file.encode('utf-8'))
+                # Display HTML-styled invoice
+                invoice_html = f"""
+                <div style="border: 2px solid #3498db; padding: 20px; border-radius: 10px; background-color: #f9f9f9; font-family: 'Segoe UI', sans-serif;">
+                    <h2 style="color: #2c3e50; margin-bottom: 10px;">Invoice</h2>
+                    <p><strong>Customer:</strong> {details['customer']}</p>
+                    <p><strong>Product:</strong> {details['product']}</p>
+                    <p><strong>Quantity:</strong> {details['quantity']}</p>
+                    <p><strong>Unit Price:</strong> ₹{details['price_per_item']}</p>
+                    <p><strong>Total Cost:</strong> <span style="color: #27ae60; font-weight: bold;">₹{details['total_cost']}</span></p>
+                    <p><strong>Warehouse:</strong> {details['warehouse']} ({details['location']})</p>
+                    <p><strong>Date:</strong> {details['date']}</p>
+                </div>
+                """
+                st.markdown(invoice_html, unsafe_allow_html=True)
+
+                # Downloadable HTML invoice
+                html_invoice = f"""
+                <html>
+                <head>
+                    <meta charset="utf-8">
+                    <title>Invoice</title>
+                    <style>
+                        body {{
+                            font-family: 'Segoe UI', sans-serif;
+                            background-color: #f9f9f9;
+                            padding: 20px;
+                        }}
+                        .invoice-box {{
+                            border: 2px solid #3498db;
+                            padding: 20px;
+                            border-radius: 10px;
+                            background-color: #ffffff;
+                            width: 600px;
+                            margin: auto;
+                        }}
+                        .invoice-box h2 {{
+                            color: #2c3e50;
+                        }}
+                        .invoice-box p {{
+                            margin: 5px 0;
+                        }}
+                        .highlight {{
+                            color: #27ae60;
+                            font-weight: bold;
+                        }}
+                    </style>
+                </head>
+                <body>
+                    <div class="invoice-box">
+                        <h2>Invoice</h2>
+                        <p><strong>Customer:</strong> {details['customer']}</p>
+                        <p><strong>Product:</strong> {details['product']}</p>
+                        <p><strong>Quantity:</strong> {details['quantity']}</p>
+                        <p><strong>Unit Price:</strong> ₹{details['price_per_item']}</p>
+                        <p><strong>Total Cost:</strong> <span class="highlight">₹{details['total_cost']}</span></p>
+                        <p><strong>Warehouse:</strong> {details['warehouse']} ({details['location']})</p>
+                        <p><strong>Date:</strong> {details['date']}</p>
+                    </div>
+                </body>
+                </html>
+                """
+                buffer = BytesIO(html_invoice.encode("utf-8"))
                 b64 = base64.b64encode(buffer.read()).decode()
-                href = f'<a href="data:file/txt;base64,{b64}" download="invoice_{details["customer"]}.txt">📄 Download Invoice</a>'
+                href = f'<a href="data:text/html;base64,{b64}" download="invoice_{details["customer"]}.html">📥 <strong>Download Styled Invoice (HTML)</strong></a>'
                 st.markdown(href, unsafe_allow_html=True)
 
 # 🔄 RESTOCKING
