@@ -14,8 +14,8 @@
         "Warehouse_2": {
             "city": "Mumbai",
             "stock": {
-                "iPhone 13": 10,
-                "MacBook Air": 3
+                "iPhone 13": 9,
+                "MacBook Air": 2
             },
             "prices": {
                 "iPhone 13": 70500,

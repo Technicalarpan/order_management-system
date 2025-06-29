@@ -38,5 +38,25 @@
         "price_per_item": 71000,
         "total_cost": 852000,
         "date": "2025-06-29 20:55:57"
+    },
+    {
+        "customer": "ankita",
+        "product": "MacBook Air",
+        "quantity": 1,
+        "warehouse": "Warehouse_2",
+        "location": "Mumbai",
+        "price_per_item": 96000,
+        "total_cost": 96000,
+        "date": "2025-06-29 21:14:30"
+    },
+    {
+        "customer": "Arpan",
+        "product": "iPhone 13",
+        "quantity": 1,
+        "warehouse": "Warehouse_2",
+        "location": "Bangalore",
+        "price_per_item": 70500,
+        "total_cost": 70500,
+        "date": "2025-06-29 22:25:02"
     }
 ]
