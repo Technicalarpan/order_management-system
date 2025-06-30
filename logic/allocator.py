@@ -32,10 +32,12 @@ def load_order_log():
 def smart_allocate(city, product, quantity, inventory):
     best_score = float('inf')
     selected_wh = None
+
     for name, wh in inventory['warehouses'].items():
-        stock = wh['stock'].get(product, 0)
+        stock = wh.get('stock', {}).get(product, 0)
         if stock >= quantity:
-            price = wh['prices'][product]
+            # Safe price fallback
+            price = wh.get('prices', {}).get(product, 100)  # Default ₹100
             wh_city = wh['city']
             if city == wh_city:
                 distance = 0
@@ -45,17 +47,22 @@ def smart_allocate(city, product, quantity, inventory):
             if score < best_score:
                 best_score = score
                 selected_wh = name
+
     return selected_wh
 
 def place_order(city, product, quantity, customer):
     inventory = load_inventory()
     wh_name = smart_allocate(city, product, quantity, inventory)
+
     if wh_name:
         warehouse = inventory['warehouses'][wh_name]
-        price = warehouse['prices'][product]
+        stock = warehouse.setdefault('stock', {})
+        price = warehouse.get('prices', {}).get(product, 100)
         total_cost = price * quantity
-        warehouse['stock'][product] -= quantity
+
+        stock[product] -= quantity
         save_inventory(inventory)
+
         entry = {
             "customer": customer,
             "product": product,
@@ -68,11 +75,13 @@ def place_order(city, product, quantity, customer):
         }
         log_order(entry)
         return f"✅ Order placed from {wh_name} ({warehouse['city']})", entry
+
     return "❌ Order failed: insufficient stock.", None
 
 def restock_warehouse(warehouse, product, quantity):
     inventory = load_inventory()
     if warehouse in inventory['warehouses']:
+        inventory['warehouses'][warehouse].setdefault('stock', {})
         stock = inventory['warehouses'][warehouse]['stock']
         stock[product] = stock.get(product, 0) + quantity
         save_inventory(inventory)

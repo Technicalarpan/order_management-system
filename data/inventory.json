@@ -1,55 +1,44 @@
 {
+    "product_list": [
+        "Phone",
+        "Laptop",
+        "TV"
+    ],
     "warehouses": {
-        "Warehouse_1": {
+        "WH1": {
             "city": "Delhi",
+            "location": [
+                28.61,
+                77.23
+            ],
             "stock": {
-                "iPhone 13": 9,
-                "MacBook Air": 3
-            },
-            "prices": {
-                "iPhone 13": 70000,
-                "MacBook Air": 95000
+                "Phone": 9,
+                "TV": 2,
+                "Laptop": 1
             }
         },
-        "Warehouse_2": {
+        "WH2": {
             "city": "Mumbai",
+            "location": [
+                19.07,
+                72.87
+            ],
             "stock": {
-                "iPhone 13": 9,
-                "MacBook Air": 0
-            },
-            "prices": {
-                "iPhone 13": 70500,
-                "MacBook Air": 96000
-            }
-        },
-        "Warehouse_3": {
-            "city": "Bangalore",
-            "stock": {
-                "iPhone 13": 0,
-                "MacBook Air": 3
-            },
-            "prices": {
-                "iPhone 13": 71000,
-                "MacBook Air": 97000
+                "TV": 15,
+                "Laptop": 1
             }
         }
     },
-    "product_list": [
-        "iPhone 13",
-        "MacBook Air"
-    ],
     "city_distances": {
         "Delhi": {
-            "Mumbai": 1400,
-            "Bangalore": 2100
+            "WH1": 0,
+            "WH2": 1400
         },
         "Mumbai": {
-            "Delhi": 1400,
-            "Bangalore": 980
-        },
-        "Bangalore": {
-            "Delhi": 2100,
-            "Mumbai": 980
+            "WH1": 1400,
+            "WH2": 0
         }
-    }
+    },
+    "WH1": {},
+    "WH2": {}
 }
