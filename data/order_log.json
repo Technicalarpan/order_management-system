@@ -8,5 +8,135 @@
         "price_per_item": 100,
         "total_cost": 100,
         "date": "2025-06-30 10:30:36"
+    },
+    {
+        "customer": "",
+        "product": "Laptop",
+        "quantity": 2,
+        "warehouse": "WH1",
+        "location": "Delhi",
+        "price_per_item": 100,
+        "total_cost": 200,
+        "date": "2025-06-30 11:12:37"
+    },
+    {
+        "customer": "",
+        "product": "Phone",
+        "quantity": 1,
+        "warehouse": "WH1",
+        "location": "Delhi",
+        "price_per_item": 100,
+        "total_cost": 100,
+        "date": "2025-06-30 11:26:05"
+    },
+    {
+        "customer": "",
+        "product": "Phone",
+        "quantity": 1,
+        "warehouse": "WH1",
+        "location": "Delhi",
+        "price_per_item": 100,
+        "total_cost": 100,
+        "date": "2025-06-30 11:26:20"
+    },
+    {
+        "customer": "eee",
+        "product": "Laptop",
+        "quantity": 1,
+        "warehouse": "WH2",
+        "location": "Mumbai",
+        "price_per_item": 100,
+        "total_cost": 100,
+        "date": "2025-06-30 11:36:55"
+    },
+    {
+        "customer": "Unnamed Customer",
+        "product": "Phone",
+        "quantity": 1,
+        "warehouse": "WH1",
+        "location": "Delhi",
+        "price_per_item": 100,
+        "total_cost": 100,
+        "date": "2025-06-30 11:39:06"
+    },
+    {
+        "customer": "ddd",
+        "product": "TV",
+        "quantity": 1,
+        "warehouse": "WH2",
+        "location": "Mumbai",
+        "price_per_item": 100,
+        "total_cost": 100,
+        "date": "2025-06-30 11:40:55"
+    },
+    {
+        "customer": "Unnamed Customer",
+        "product": "Phone",
+        "quantity": 1,
+        "warehouse": "WH1",
+        "location": "Delhi",
+        "price_per_item": 100,
+        "total_cost": 100,
+        "date": "2025-06-30 11:53:57"
+    },
+    {
+        "customer": "Unnamed Customer",
+        "product": "Laptop",
+        "quantity": 1,
+        "warehouse": "WH2",
+        "location": "Mumbai",
+        "price_per_item": 100,
+        "total_cost": 100,
+        "date": "2025-06-30 11:54:48"
+    },
+    {
+        "customer": "sss",
+        "product": "TV",
+        "quantity": 1,
+        "warehouse": "WH2",
+        "location": "Mumbai",
+        "price_per_item": 100,
+        "total_cost": 100,
+        "date": "2025-06-30 11:56:24"
+    },
+    {
+        "customer": "dd",
+        "product": "Phone",
+        "quantity": 1,
+        "warehouse": "WH1",
+        "location": "Delhi",
+        "price_per_item": 100,
+        "total_cost": 100,
+        "date": "2025-06-30 11:58:35"
+    },
+    {
+        "customer": "dd",
+        "product": "Phone",
+        "quantity": 2,
+        "warehouse": "WH1",
+        "location": "Delhi",
+        "price_per_item": 100,
+        "total_cost": 200,
+        "date": "2025-06-30 11:58:41"
+    },
+    {
+        "customer": "ddd",
+        "product": "Phone",
+        "quantity": 1,
+        "warehouse": "WH1",
+        "location": "Delhi",
+        "price_per_item": 10000,
+        "total_cost": 10000,
+        "date": "2025-06-30 12:05:07"
+    },
+    {
+        "customer": "ddd",
+        "product": "Phone",
+        "quantity": 4,
+        "warehouse": "WH1",
+        "location": "Delhi",
+        "price_per_item": 10000,
+        "total_cost": 40000,
+        "date": "2025-06-30 12:05:27"
     }
 ]

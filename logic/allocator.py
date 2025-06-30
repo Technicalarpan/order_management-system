@@ -5,13 +5,16 @@ from datetime import datetime
 INVENTORY_FILE = 'data/inventory.json'
 ORDER_LOG_FILE = 'data/order_log.json'
 
+
 def load_inventory():
     with open(INVENTORY_FILE, 'r') as f:
         return json.load(f)
 
+
 def save_inventory(inventory):
     with open(INVENTORY_FILE, 'w') as f:
         json.dump(inventory, f, indent=4)
+
 
 def log_order(entry):
     if not os.path.exists(ORDER_LOG_FILE):
@@ -23,21 +26,24 @@ def log_order(entry):
     with open(ORDER_LOG_FILE, 'w') as f:
         json.dump(logs, f, indent=4)
 
+
 def load_order_log():
     if not os.path.exists(ORDER_LOG_FILE):
         return []
     with open(ORDER_LOG_FILE, 'r') as f:
         return json.load(f)
 
+
 def smart_allocate(city, product, quantity, inventory):
     best_score = float('inf')
     selected_wh = None
 
+    product_prices = inventory.get('product_prices', {})
+    price = product_prices.get(product, 100)  # fallback to 100 if missing
+
     for name, wh in inventory['warehouses'].items():
         stock = wh.get('stock', {}).get(product, 0)
         if stock >= quantity:
-            # Safe price fallback
-            price = wh.get('prices', {}).get(product, 100)  # Default ₹100
             wh_city = wh['city']
             if city == wh_city:
                 distance = 0
@@ -50,16 +56,20 @@ def smart_allocate(city, product, quantity, inventory):
 
     return selected_wh
 
+
 def place_order(city, product, quantity, customer):
     inventory = load_inventory()
+    product_prices = inventory.get("product_prices", {})
+    price = product_prices.get(product, 100)
+
+    if not customer.strip():
+        return "⚠️ Customer name is required.", None
+
     wh_name = smart_allocate(city, product, quantity, inventory)
 
     if wh_name:
         warehouse = inventory['warehouses'][wh_name]
         stock = warehouse.setdefault('stock', {})
-        price = warehouse.get('prices', {}).get(product, 100)
-        total_cost = price * quantity
-
         stock[product] -= quantity
         save_inventory(inventory)
 
@@ -70,13 +80,14 @@ def place_order(city, product, quantity, customer):
             "warehouse": wh_name,
             "location": city,
             "price_per_item": price,
-            "total_cost": total_cost,
+            "total_cost": price * quantity,
             "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
         log_order(entry)
         return f"✅ Order placed from {wh_name} ({warehouse['city']})", entry
 
     return "❌ Order failed: insufficient stock.", None
+
 
 def restock_warehouse(warehouse, product, quantity):
     inventory = load_inventory()

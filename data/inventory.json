@@ -4,6 +4,11 @@
         "Laptop",
         "TV"
     ],
+    "product_prices": {
+        "Phone": 10000,
+        "Laptop": 50000,
+        "TV": 30000
+    },
     "warehouses": {
         "WH1": {
             "city": "Delhi",
@@ -12,9 +17,9 @@
                 77.23
             ],
             "stock": {
-                "Phone": 9,
+                "Phone": 0,
                 "TV": 2,
-                "Laptop": 3
+                "Laptop": 1
             }
         },
         "WH2": {
@@ -24,8 +29,8 @@
                 72.87
             ],
             "stock": {
-                "TV": 15,
-                "Laptop": 1
+                "TV": 14,
+                "Laptop": 0
             }
         }
     },
@@ -38,7 +43,5 @@
             "WH1": 1400,
             "WH2": 0
         }
-    },
-    "WH1": {},
-    "WH2": {}
+    }
 }
