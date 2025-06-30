@@ -20,24 +20,26 @@ with tab1:
     warehouses = get_warehouses(inventory)
 
     st.header("📥 Place Order")
+
+    # User inputs
+    name = st.text_input("Customer Name")
+    city = st.selectbox("City", cities)
+    product = st.selectbox("Product", products)
+    quantity = st.number_input("Quantity", min_value=1, step=1)
+
+    # ✅ Only count stock from warehouses located in selected city
+    total_available = sum(
+        inventory["warehouses"][wh].get("stock", {}).get(product, 0)
+        for wh in warehouses
+        if inventory["warehouses"][wh]["city"] == city
+    )
+
+    if total_available == 0:
+        st.warning("❌ Item not available in selected city.")
+    else:
+        st.info(f"✅ Available Stock in {city}: {total_available} units")
+
     with st.form("order_form"):
-        name = st.text_input("Customer Name")
-        city = st.selectbox("City", cities)
-        product = st.selectbox("Product", products)
-        quantity = st.number_input("Quantity", min_value=1, step=1)
-
-        # ✅ Read from warehouse stock dictionary
-        total_available = sum(
-            inventory["warehouses"][wh]["stock"].get(product, 0)
-            for wh in warehouses
-            if "stock" in inventory["warehouses"][wh]
-        )
-
-        if total_available == 0:
-            st.warning("❌ Item not available in any warehouse.")
-        else:
-            st.info(f"✅ Available Stock: {total_available} units")
-
         submit = st.form_submit_button("Place Order")
 
         if submit:
