@@ -9,8 +9,8 @@ import base64
 inventory = load_inventory()
 product_prices = inventory.get("product_prices", {})
 
-st.set_page_config(page_title="Order Manager Pro", layout="centered")
-st.title("📦 Flipkart-style Order Manager")
+st.set_page_config(page_title="Order Management System", layout="centered")
+st.title("📦 Order Management System")
 
 tab1, tab2, tab3 = st.tabs(["Place Order", "Restock", "Analytics"])
 
