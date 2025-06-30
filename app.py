@@ -96,11 +96,12 @@ with tab2:
         city = inventory["warehouses"][wh]["city"]
         for prod in get_products(inventory):
             qty = inventory["warehouses"][wh].get("stock", {}).get(prod, 0)
-            stock_data.append({"City": city, "Product": prod, "Available Stock": qty})
+            stock_data.append({"City": city, "Warehouse": wh, "Product": prod, "Available Stock": qty})
     stock_df = pd.DataFrame(stock_data)
     st.dataframe(stock_df)
 
     st.subheader("➕ Add Stock")
+
     warehouse_display = {
         wh: f"{inventory['warehouses'][wh]['city']} ({wh})" for wh in get_warehouses(inventory)
     }
@@ -111,8 +112,6 @@ with tab2:
         warehouse = display_to_wh[selected_display]
 
         product = st.selectbox("Product", get_products(inventory), key="prod_restock")
-        current_stock = inventory["warehouses"][warehouse].get("stock", {}).get(product, 0)
-        st.info(f"🧮 Available Stock in {inventory['warehouses'][warehouse]['city']}: {current_stock} units")
 
         quantity = st.number_input("Restock Quantity", min_value=1, step=1, key="restock_qty")
         restock = st.form_submit_button("Restock")
