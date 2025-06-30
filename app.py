@@ -142,8 +142,6 @@ with tab3:
 
     if logs:
         df = pd.DataFrame(logs)
-        df["Unit Price"] = df["product"].map(product_prices)
-        df["Total Cost"] = df["quantity"] * df["Unit Price"]
 
         st.subheader("📋 Order History Table")
         st.dataframe(df)
@@ -160,8 +158,8 @@ with tab3:
             product_chart.columns = ['Product', 'Order Count']
             st.bar_chart(product_chart.set_index('Product'))
 
-        if 'Total Cost' in df.columns:
+        if 'total_cost' in df.columns:
             st.subheader("Total Cost per Order")
-            st.line_chart(df['Total Cost'])
+            st.line_chart(df['total_cost'])
     else:
         st.info("No order history available yet.")

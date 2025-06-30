@@ -19,7 +19,7 @@
             "stock": {
                 "Phone": 0,
                 "TV": 2,
-                "Laptop": 1
+                "Laptop": 0
             }
         },
         "WH2": {
@@ -29,7 +29,7 @@
                 72.87
             ],
             "stock": {
-                "TV": 14,
+                "TV": 7,
                 "Laptop": 0
             }
         }
