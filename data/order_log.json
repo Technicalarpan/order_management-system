@@ -1,32 +1,3 @@
 [
-    {
-        "customer": "ddd",
-        "product": "Laptop",
-        "quantity": 1,
-        "warehouse": "WH1",
-        "location": "Delhi",
-        "price_per_item": 50000,
-        "total_cost": 50000,
-        "date": "2025-06-30 12:18:07"
-    },
-    {
-        "customer": "ddd",
-        "product": "TV",
-        "quantity": 5,
-        "warehouse": "WH2",
-        "location": "Mumbai",
-        "price_per_item": 30000,
-        "total_cost": 150000,
-        "date": "2025-06-30 12:18:27"
-    },
-    {
-        "customer": "ddd",
-        "product": "TV",
-        "quantity": 2,
-        "warehouse": "WH2",
-        "location": "Mumbai",
-        "price_per_item": 30000,
-        "total_cost": 60000,
-        "date": "2025-06-30 12:18:42"
-    }
+    
 ]
